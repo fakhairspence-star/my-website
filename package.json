@@ -1,0 +1,49 @@
+{
+  "name": "newark-hhs-training-platform",
+  "version": "1.0.0",
+  "description": "AI-Enabled Training Platform for Newark Department of Health & Homeless Services",
+  "main": "docs/index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080 --directory docs",
+    "serve": "npx serve docs",
+    "dev": "npm run serve",
+    "build": "echo 'No build process required - static files'",
+    "deploy": "echo 'Deployment handled by GitHub Actions'",
+    "test": "echo 'No tests configured yet'",
+    "lint": "echo 'No linting configured yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fakhairspence-star/my-website.git"
+  },
+  "keywords": [
+    "training",
+    "ai",
+    "homeless-services",
+    "newark",
+    "health-department",
+    "forms",
+    "case-management",
+    "dashboard",
+    "education",
+    "government"
+  ],
+  "author": "Newark Department of Health & Homeless Services",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fakhairspence-star/my-website/issues"
+  },
+  "homepage": "https://fakhairspence-star.github.io/my-website",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}

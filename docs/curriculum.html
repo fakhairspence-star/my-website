@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Curriculum - Newark H&HS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>Newark H&HS</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="curriculum.html" class="active">Training</a></li>
+                    <li><a href="ai-agent.html">AI Assistant</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="forms.html">Forms</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Training Curriculum</h1>
+                <p>Comprehensive 10-module training program for Newark H&HS staff</p>
+                <div class="real-training-notice">
+                    <i class="fas fa-video"></i>
+                    <strong>Real Educational Videos:</strong> Our training modules feature actual subject matter experts presenting authentic content specific to each topic area.
+                </div>
+            </div>
+        </section>
+
+        <section class="curriculum-overview">
+            <div class="container">
+                <div class="course-info">
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Duration</h3>
+                        <p>8-10 sessions, 1.5-2 hours each</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-calendar"></i>
+                        <h3>Timeline</h3>
+                        <p>4-6 weeks completion</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Format</h3>
+                        <p>Blended learning with hands-on labs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="modules-section">
+            <div class="container">
+                <div class="modules-grid">
+                    <div class="module-card" data-module="1">
+                        <div class="module-header">
+                            <div class="module-number">1</div>
+                            <div class="module-status">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <h3>Introduction & Context</h3>
+                        <p>Overview of Newark's health & homeless services, current challenges, goals of the AI system</p>
+                        <div class="module-details">
+                            <span class="format">Lecture + Discussion</span>
+                            <span class="duration">1.5 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(1)">Start Module</button>
+                    </div>
+
+                    <div class="module-card" data-module="2">
+                        <div class="module-header">
+                            <div class="module-number">2</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Lead Abatement & Regulation</h3>
+                        <p>Laws & rules (NJ, Newark), municipal lead certifications, inspection protocols, interim controls vs full abatement</p>
+                        <div class="module-details">
+                            <span class="format">Lecture + Case Study</span>
+                            <span class="duration">2 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(2)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="3">
+                        <div class="module-header">
+                            <div class="module-number">3</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Relocation & Tenant Protections</h3>
+                        <p>When relocation is required, eligible rights, how to coordinate moves, notice requirements</p>
+                        <div class="module-details">
+                            <span class="format">Lecture + Role Play</span>
+                            <span class="duration">1.5 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(3)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="4">
+                        <div class="module-header">
+                            <div class="module-number">4</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Homeless Services / Shelter Protocols</h3>
+                        <p>Office of Homeless Services, intake, eligibility, diversion, shelter rules, grievance rights</p>
+                        <div class="module-details">
+                            <span class="format">Lecture + Scenario Simulations</span>
+                            <span class="duration">2 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(4)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="5">
+                        <div class="module-header">
+                            <div class="module-number">5</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Data Systems & Portals</h3>
+                        <p>Best practices for client data systems, portal design, user roles, privacy & security</p>
+                        <div class="module-details">
+                            <span class="format">Interactive Design Workshop</span>
+                            <span class="duration">1.5 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(5)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="6">
+                        <div class="module-header">
+                            <div class="module-number">6</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Forms & Document Design</h3>
+                        <p>Standard forms (grievance, complaint, relocation, lead inspection), versioning, accessibility</p>
+                        <div class="module-details">
+                            <span class="format">Hands-on: Build Form Templates</span>
+                            <span class="duration">2 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(6)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="7">
+                        <div class="module-header">
+                            <div class="module-number">7</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>KPIs & Performance Management</h3>
+                        <p>Key performance indicators, submission workflows, dashboards, and metrics tracking</p>
+                        <div class="module-details">
+                            <span class="format">Hands-on KPI Dashboard Design</span>
+                            <span class="duration">1.5 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(7)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="8">
+                        <div class="module-header">
+                            <div class="module-number">8</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>AI Agent & Tool Integration</h3>
+                        <p>How to use the AI assistant: generate forms, auto-fill, override, track cases</p>
+                        <div class="module-details">
+                            <span class="format">Tool Demo + Labs</span>
+                            <span class="duration">2 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(8)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="9">
+                        <div class="module-header">
+                            <div class="module-number">9</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Workflow & Escalation Protocols</h3>
+                        <p>End-to-end workflows: client arrival → form generation → case assignment → resolution</p>
+                        <div class="module-details">
+                            <span class="format">Scenario Drills</span>
+                            <span class="duration">1.5 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(9)" disabled>Locked</button>
+                    </div>
+
+                    <div class="module-card" data-module="10">
+                        <div class="module-header">
+                            <div class="module-number">10</div>
+                            <div class="module-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <h3>Quality Assurance & Feedback Loop</h3>
+                        <p>Audits, error rates, user feedback, system improvement, updates</p>
+                        <div class="module-details">
+                            <span class="format">Workshop + Continuous Improvement</span>
+                            <span class="duration">1.5 hours</span>
+                        </div>
+                        <button class="start-module-btn" onclick="startModule(10)" disabled>Locked</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracking -->
+        <section class="progress-section">
+            <div class="container">
+                <div class="progress-card">
+                    <h3>Your Progress</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="courseProgress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="completedModules">0</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="remainingModules">10</span>
+                            <span class="stat-label">Remaining</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="totalHours">0</span>
+                            <span class="stat-label">Hours Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Module Modal -->
+    <div id="moduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle">Module Title</h2>
+            </div>
+            <div class="modal-body">
+                <div id="moduleContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+                <div class="module-actions">
+                    <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                    <button class="btn btn-primary" onclick="completeModule()">Mark Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newark Health & Homeless Services</h4>
+                    <p>AI-Enabled Training Platform for enhanced service delivery</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="curriculum.html">Training Modules</a></li>
+                        <li><a href="ai-agent.html">AI Assistant</a></li>
+                        <li><a href="forms.html">Forms Library</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

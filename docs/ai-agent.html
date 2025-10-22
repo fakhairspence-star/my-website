@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - Newark H&HS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>Newark H&HS</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="curriculum.html">Training</a></li>
+                    <li><a href="ai-agent.html" class="active">AI Assistant</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="forms.html">Forms</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>AI Form Generation Assistant</h1>
+                <p>Intelligent form generation based on case descriptions and client needs</p>
+            </div>
+        </section>
+
+        <section class="ai-interface">
+            <div class="container">
+                <div class="ai-layout">
+                    <!-- Input Section -->
+                    <div class="input-section">
+                        <div class="ai-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-robot"></i> Describe the Case</h3>
+                                <p>Enter client information and describe their situation</p>
+                            </div>
+                            <div class="case-input">
+                                <textarea 
+                                    id="caseDescription" 
+                                    placeholder="Example: Client: Maria Hernandez, age 3, lives at 45 Ash St, Newark. Complains of peeling paint, has elevated blood lead. Landlord refused to act. Wants relocation."
+                                    rows="6"
+                                ></textarea>
+                                <button class="btn btn-primary" onclick="generateForms()">
+                                    <i class="fas fa-magic"></i> Generate Forms
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quick Templates -->
+                        <div class="ai-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-clock"></i> Quick Templates</h3>
+                                <p>Click to use common scenario templates</p>
+                            </div>
+                            <div class="template-buttons">
+                                <button class="template-btn" onclick="useTemplate('lead')">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Lead Hazard Case
+                                </button>
+                                <button class="template-btn" onclick="useTemplate('homeless')">
+                                    <i class="fas fa-home"></i>
+                                    Homeless Intake
+                                </button>
+                                <button class="template-btn" onclick="useTemplate('grievance')">
+                                    <i class="fas fa-file-alt"></i>
+                                    Shelter Grievance
+                                </button>
+                                <button class="template-btn" onclick="useTemplate('relocation')">
+                                    <i class="fas fa-truck"></i>
+                                    Relocation Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Section -->
+                    <div class="output-section">
+                        <div class="ai-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-file-text"></i> Generated Forms</h3>
+                                <p>AI-suggested forms based on your case description</p>
+                            </div>
+                            <div id="generatedForms" class="forms-output">
+                                <div class="no-forms">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <p>Enter a case description to generate appropriate forms</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ai-card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-list-check"></i> Recommended Actions</h3>
+                                <p>Next steps and follow-up actions</p>
+                            </div>
+                            <div id="recommendedActions" class="actions-output">
+                                <div class="no-actions">
+                                    <p>Actions will appear after form generation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case History -->
+        <section class="case-history">
+            <div class="container">
+                <div class="ai-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history"></i> Recent Cases</h3>
+                        <p>Recently processed cases and their forms</p>
+                    </div>
+                    <div class="history-list" id="caseHistory">
+                        <!-- Cases will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Capabilities -->
+        <section class="ai-capabilities">
+            <div class="container">
+                <h2>AI Assistant Capabilities</h2>
+                <div class="capabilities-grid">
+                    <div class="capability-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Smart Form Selection</h3>
+                        <p>Analyzes case descriptions to identify required forms automatically</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-fill-drip"></i>
+                        <h3>Auto-Population</h3>
+                        <p>Pre-fills forms with extracted information from case descriptions</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-route"></i>
+                        <h3>Workflow Guidance</h3>
+                        <p>Suggests next steps and escalation procedures based on case type</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Compliance Check</h3>
+                        <p>Ensures all required fields and regulations are addressed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Form Preview Modal -->
+    <div id="formModal" class="modal">
+        <div class="modal-content form-modal">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="formModalTitle">Form Preview</h2>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="editForm()">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-primary" onclick="saveForm()">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                    <button class="btn btn-success" onclick="exportForm()">
+                        <i class="fas fa-download"></i> Export PDF
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="formPreview">
+                    <!-- Form content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newark Health & Homeless Services</h4>
+                    <p>AI-Enabled Training Platform for enhanced service delivery</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="curriculum.html">Training Modules</a></li>
+                        <li><a href="ai-agent.html">AI Assistant</a></li>
+                        <li><a href="forms.html">Forms Library</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

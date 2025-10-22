@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Library - Newark H&HS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>Newark H&HS</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="curriculum.html">Training</a></li>
+                    <li><a href="ai-agent.html">AI Assistant</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="forms.html" class="active">Forms</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Forms Library</h1>
+                <p>Comprehensive collection of standardized forms and documents</p>
+            </div>
+        </section>
+
+        <!-- Search and Filter -->
+        <section class="forms-controls">
+            <div class="container">
+                <div class="controls-bar">
+                    <div class="search-box">
+                        <input type="text" id="formSearch" placeholder="Search forms...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter-controls">
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="lead">Lead Abatement</option>
+                            <option value="homeless">Homeless Services</option>
+                            <option value="relocation">Relocation</option>
+                            <option value="grievance">Grievances</option>
+                            <option value="inspection">Inspections</option>
+                        </select>
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="draft">Draft</option>
+                            <option value="archived">Archived</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms Grid -->
+        <section class="forms-section">
+            <div class="container">
+                <div class="forms-grid" id="formsGrid">
+                    <!-- Lead Abatement Forms -->
+                    <div class="form-card" data-category="lead" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="form-badge lead">Lead</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Lead Hazard Inspection Request</h3>
+                            <p>Form for requesting comprehensive lead hazard inspection of residential properties</p>
+                            <div class="form-meta">
+                                <span class="form-version">v2.1</span>
+                                <span class="form-updated">Updated: Oct 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('lead-inspection')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('lead-inspection')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('lead-inspection')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-card" data-category="lead" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="form-badge lead">Lead</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Lead Abatement Certification</h3>
+                            <p>Certification form for completed lead abatement work and safety compliance</p>
+                            <div class="form-meta">
+                                <span class="form-version">v1.8</span>
+                                <span class="form-updated">Updated: Sep 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('lead-abatement')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('lead-abatement')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('lead-abatement')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Homeless Services Forms -->
+                    <div class="form-card" data-category="homeless" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="form-badge homeless">Homeless</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Homeless Services Intake Form</h3>
+                            <p>Initial assessment and intake form for homeless services eligibility</p>
+                            <div class="form-meta">
+                                <span class="form-version">v3.0</span>
+                                <span class="form-updated">Updated: Oct 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('homeless-intake')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('homeless-intake')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('homeless-intake')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-card" data-category="homeless" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-bed"></i>
+                            </div>
+                            <div class="form-badge homeless">Homeless</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Shelter Placement Request</h3>
+                            <p>Request form for emergency and transitional shelter placement</p>
+                            <div class="form-meta">
+                                <span class="form-version">v2.5</span>
+                                <span class="form-updated">Updated: Oct 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('shelter-placement')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('shelter-placement')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('shelter-placement')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Relocation Forms -->
+                    <div class="form-card" data-category="relocation" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="form-badge relocation">Relocation</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Relocation Assistance Application</h3>
+                            <p>Application for tenant relocation assistance and temporary housing</p>
+                            <div class="form-meta">
+                                <span class="form-version">v1.9</span>
+                                <span class="form-updated">Updated: Sep 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('relocation-assistance')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('relocation-assistance')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('relocation-assistance')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grievance Forms -->
+                    <div class="form-card" data-category="grievance" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="form-badge grievance">Grievance</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Client Grievance Form</h3>
+                            <p>Formal complaint form for service issues and grievances</p>
+                            <div class="form-meta">
+                                <span class="form-version">v2.2</span>
+                                <span class="form-updated">Updated: Oct 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('client-grievance')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('client-grievance')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('client-grievance')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-card" data-category="grievance" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="form-badge grievance">Grievance</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Grievance Resolution Report</h3>
+                            <p>Documentation of grievance investigation and resolution actions</p>
+                            <div class="form-meta">
+                                <span class="form-version">v1.6</span>
+                                <span class="form-updated">Updated: Aug 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('grievance-resolution')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('grievance-resolution')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('grievance-resolution')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Inspection Forms -->
+                    <div class="form-card" data-category="inspection" data-status="active">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="form-badge inspection">Inspection</div>
+                        </div>
+                        <div class="form-content">
+                            <h3>Property Safety Inspection</h3>
+                            <p>Comprehensive safety and habitability inspection checklist</p>
+                            <div class="form-meta">
+                                <span class="form-version">v2.0</span>
+                                <span class="form-updated">Updated: Oct 2025</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn btn-sm btn-secondary" onclick="previewForm('safety-inspection')">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button class="btn btn-sm btn-primary" onclick="useForm('safety-inspection')">
+                                <i class="fas fa-plus"></i> Use Form
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="downloadForm('safety-inspection')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Statistics -->
+        <section class="form-stats">
+            <div class="container">
+                <div class="stats-card">
+                    <h3>Form Library Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">23</div>
+                            <div class="stat-label">Total Forms</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">18</div>
+                            <div class="stat-label">Active Forms</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">156</div>
+                            <div class="stat-label">Forms Used This Month</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Recently Updated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Form Preview Modal -->
+    <div id="formPreviewModal" class="modal">
+        <div class="modal-content form-preview-modal">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="previewFormTitle">Form Preview</h2>
+                <div class="preview-actions">
+                    <button class="btn btn-secondary" onclick="printForm()">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button class="btn btn-primary" onclick="fillForm()">
+                        <i class="fas fa-edit"></i> Fill Form
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="formPreviewContent">
+                    <!-- Preview content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Newark Health & Homeless Services</h4>
+                    <p>AI-Enabled Training Platform for enhanced service delivery</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="curriculum.html">Training Modules</a></li>
+                        <li><a href="ai-agent.html">AI Assistant</a></li>
+                        <li><a href="forms.html">Forms Library</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
