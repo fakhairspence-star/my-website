@@ -777,8 +777,10 @@ function createEnhancedVideoModal(videoId) {
     const modal = document.createElement('div');
     modal.className = 'modal video-modal enhanced-video-modal';
     
-    // Check if it's a YouTube video
+    // Check video type
     const isYouTube = videoInfo.videoUrl.includes('youtube.com/embed');
+    const isHeyGen = videoInfo.videoUrl.includes('app.heygen.com/videos');
+    const isExternalVideo = isYouTube || isHeyGen;
     
     modal.innerHTML = `
         <div class="modal-content video-modal-content">
@@ -795,16 +797,41 @@ function createEnhancedVideoModal(videoId) {
             </div>
             <div class="modal-body">
                 <div class="video-player">
-                    ${isYouTube ? 
-                        `<iframe 
-                            width="100%" 
-                            height="450" 
-                            src="${videoInfo.videoUrl}?autoplay=0&rel=0&modestbranding=1" 
-                            title="${videoInfo.title}"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>` 
+                    ${isExternalVideo ? 
+                        (isHeyGen ? 
+                            `<div class="heygen-video-container">
+                                <iframe 
+                                    width="100%" 
+                                    height="450" 
+                                    src="${videoInfo.videoUrl}" 
+                                    title="${videoInfo.title}"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                                <div class="video-info-overlay">
+                                    <div class="video-notice">
+                                        <i class="fas fa-video"></i>
+                                        <strong>AI-Generated Training Video:</strong> This video features an AI-generated presenter 
+                                        delivering customized training content.
+                                    </div>
+                                </div>
+                            </div>` :
+                            `<iframe 
+                                width="100%" 
+                                height="450" 
+                                src="${videoInfo.videoUrl}?autoplay=0&rel=0&modestbranding=1" 
+                                title="${videoInfo.title}"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                            <div class="video-info-overlay">
+                                <div class="video-notice">
+                                    <i class="fas fa-info-circle"></i>
+                                    <strong>Educational Video:</strong> This video provides educational content related to the topic.
+                                </div>
+                            </div>`) 
                         : 
                         `<video controls width="100%" height="450" preload="metadata">
                             <source src="${videoInfo.videoUrl}" type="video/mp4">
@@ -1054,7 +1081,7 @@ function getVideoInfo(videoId) {
         'intro-context': {
             title: 'AI Integration in Newark Health & Homeless Services',
             duration: '18 minutes',
-            videoUrl: 'https://www.youtube.com/embed/aircAruvnKk', // Neural Networks educational video
+            videoUrl: 'https://app.heygen.com/videos/fe3d8de9d7914b0b8d2f54231ad47fcb',
             fallbackVideoUrl: '/videos/newark-ai-intro.mp4',
             presenter: 'Dr. Maria Rodriguez, Newark H&HS Technology Director',
             description: 'Introduction to AI implementation specifically for Newark Health & Homeless Services department, focusing on local challenges and solutions.',
