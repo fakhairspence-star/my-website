@@ -779,7 +779,7 @@ function createEnhancedVideoModal(videoId) {
     
     // Check video type
     const isYouTube = videoInfo.videoUrl.includes('youtube.com/embed');
-    const isHeyGen = videoInfo.videoUrl.includes('heygen.ai') || videoInfo.videoUrl.includes('app.heygen.com/videos');
+    const isHeyGen = videoInfo.videoUrl.includes('app.heygen.com/videos');
     const isExternalVideo = isYouTube || isHeyGen;
     
     modal.innerHTML = `
@@ -800,15 +800,26 @@ function createEnhancedVideoModal(videoId) {
                     ${isExternalVideo ? 
                         (isHeyGen ? 
                             `<div class="heygen-video-container">
-                                <video 
-                                    width="100%" 
-                                    height="450" 
-                                    controls
-                                    preload="metadata"
-                                    poster="">
-                                    <source src="${videoInfo.videoUrl}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                                <div class="video-embed-wrapper">
+                                    <!-- Primary HeyGen embed attempt -->
+                                    <iframe 
+                                        id="heygen-video-${videoId}"
+                                        width="100%" 
+                                        height="450" 
+                                        src="${videoInfo.videoUrl}" 
+                                        title="${videoInfo.title}"
+                                        frameborder="0" 
+                                        sandbox="allow-scripts allow-same-origin allow-presentation"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                    <!-- Fallback button for direct access -->
+                                    <div class="video-fallback-controls">
+                                        <button onclick="window.open('${videoInfo.videoUrl}', '_blank')" class="btn btn-primary">
+                                            <i class="fas fa-external-link-alt"></i> Open HeyGen Video
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="video-info-overlay">
                                     <div class="video-notice">
                                         <i class="fas fa-video"></i>
@@ -1081,7 +1092,7 @@ function getVideoInfo(videoId) {
         'intro-context': {
             title: 'AI Integration in Newark Health & Homeless Services',
             duration: '18 minutes',
-            videoUrl: 'https://resource.heygen.ai/video/fe3d8de9d7914b0b8d2f54231ad47fcb.mp4',
+            videoUrl: 'https://app.heygen.com/videos/fe3d8de9d7914b0b8d2f54231ad47fcb',
             fallbackVideoUrl: '/videos/newark-ai-intro.mp4',
             presenter: 'Dr. Maria Rodriguez, Newark H&HS Technology Director',
             description: 'Introduction to AI implementation specifically for Newark Health & Homeless Services department, focusing on local challenges and solutions.',
