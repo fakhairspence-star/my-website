@@ -779,7 +779,7 @@ function createEnhancedVideoModal(videoId) {
     
     // Check video type
     const isYouTube = videoInfo.videoUrl.includes('youtube.com/embed');
-    const isHeyGen = videoInfo.videoUrl.includes('app.heygen.com/videos');
+    const isHeyGen = videoInfo.videoUrl.includes('app.heygen.com/embeds') || videoInfo.videoUrl.includes('app.heygen.com/videos');
     const isExternalVideo = isYouTube || isHeyGen;
     
     modal.innerHTML = `
@@ -801,22 +801,21 @@ function createEnhancedVideoModal(videoId) {
                         (isHeyGen ? 
                             `<div class="heygen-video-container">
                                 <div class="video-embed-wrapper">
-                                    <!-- Primary HeyGen embed attempt -->
-                                    <iframe 
-                                        id="heygen-video-${videoId}"
-                                        width="100%" 
-                                        height="450" 
-                                        src="${videoInfo.videoUrl}" 
-                                        title="${videoInfo.title}"
-                                        frameborder="0" 
-                                        sandbox="allow-scripts allow-same-origin allow-presentation"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                        allowfullscreen>
-                                    </iframe>
-                                    <!-- Fallback button for direct access -->
+                                    <!-- HeyGen Video Embed -->
+                                    <div class="video-placeholder" id="heygen-placeholder-${videoId}">
+                                        <div class="video-loading">
+                                            <i class="fas fa-video"></i>
+                                            <h3>AI-Generated Training Video</h3>
+                                            <p>Loading HeyGen video player...</p>
+                                            <button onclick="loadHeyGenVideo('${videoId}', '${videoInfo.videoUrl}')" class="btn btn-primary">
+                                                <i class="fas fa-play"></i> Load Video
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Direct access button -->
                                     <div class="video-fallback-controls">
-                                        <button onclick="window.open('${videoInfo.videoUrl}', '_blank')" class="btn btn-primary">
-                                            <i class="fas fa-external-link-alt"></i> Open HeyGen Video
+                                        <button onclick="window.open('https://app.heygen.com/videos/fe3d8de9d7914b0b8d2f54231ad47fcb', '_blank')" class="btn btn-secondary">
+                                            <i class="fas fa-external-link-alt"></i> Open in HeyGen
                                         </button>
                                     </div>
                                 </div>
@@ -1092,7 +1091,7 @@ function getVideoInfo(videoId) {
         'intro-context': {
             title: 'AI Integration in Newark Health & Homeless Services',
             duration: '18 minutes',
-            videoUrl: 'https://app.heygen.com/videos/fe3d8de9d7914b0b8d2f54231ad47fcb',
+            videoUrl: 'https://app.heygen.com/embeds/fe3d8de9d7914b0b8d2f54231ad47fcb',
             fallbackVideoUrl: '/videos/newark-ai-intro.mp4',
             presenter: 'Dr. Maria Rodriguez, Newark H&HS Technology Director',
             description: 'Introduction to AI implementation specifically for Newark Health & Homeless Services department, focusing on local challenges and solutions.',
@@ -2697,6 +2696,64 @@ if (!document.getElementById('notification-styles')) {
     styleSheet.id = 'notification-styles';
     styleSheet.textContent = notificationStyles;
     document.head.appendChild(styleSheet);
+}
+
+// HeyGen Video Loading Function
+function loadHeyGenVideo(videoId, embedUrl) {
+    const placeholder = document.getElementById(`heygen-placeholder-${videoId}`);
+    if (placeholder) {
+        // Try multiple embed approaches
+        const embedMethods = [
+            // Method 1: Direct iframe embed
+            () => {
+                placeholder.innerHTML = `
+                    <iframe 
+                        width="100%" 
+                        height="450" 
+                        src="${embedUrl}" 
+                        title="HeyGen AI Training Video"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>`;
+            },
+            // Method 2: Create a custom video container with direct link
+            () => {
+                placeholder.innerHTML = `
+                    <div class="heygen-direct-access">
+                        <div class="video-thumbnail">
+                            <i class="fas fa-play-circle"></i>
+                            <h3>AI Training Video Ready</h3>
+                            <p>Click below to watch the HeyGen AI-generated training video</p>
+                            <button onclick="window.open('https://app.heygen.com/videos/fe3d8de9d7914b0b8d2f54231ad47fcb', '_blank')" 
+                                    class="btn btn-primary btn-lg">
+                                <i class="fas fa-play"></i> Watch Video
+                            </button>
+                        </div>
+                    </div>`;
+            }
+        ];
+        
+        // Try first method, fallback to second if needed
+        try {
+            embedMethods[0]();
+            
+            // Check if iframe loads, if not switch to direct access
+            setTimeout(() => {
+                const iframe = placeholder.querySelector('iframe');
+                if (iframe) {
+                    iframe.onerror = () => embedMethods[1]();
+                    iframe.onload = () => {
+                        // iframe loaded successfully
+                        console.log('HeyGen video iframe loaded successfully');
+                    };
+                }
+            }, 1000);
+        } catch (error) {
+            console.log('Using direct access method for HeyGen video');
+            embedMethods[1]();
+        }
+    }
 }
 
 // Error handling
